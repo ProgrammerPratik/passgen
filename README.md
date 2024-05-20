@@ -5,7 +5,8 @@ Version: 1.0
 
 ```
 usage:
--l <length> -m <mode (0,1,2)>
+-l <length> -m <mode>
+there are 3 modes i.e. 0,1,2
 -h    for help
 
 OPTIONAL ARGUMENTS:
