@@ -4,7 +4,7 @@ void help(){
     cout<<"\nBASIC AND SIMPLE CLI BASED PASSWORD GENERATOR BY PRATIK!!!\nusage:\nbasic input: -l <length> -m\nOPTIONAL ARGUMENTS:\n-l  OR  -length   length of password\n-m  OR  -mode   mode of password (0=only letters,1=random,2=alphanumeric)\nexample input: -l 10 -m 1";
 }
 void version(){
-    cout<<"Program version:1.0";
+    cout<<"Program version:1.0\nGithub: https://github.com/ProgrammerPratik/passgen";
 }
 string password(int len, int mode){
     string alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
