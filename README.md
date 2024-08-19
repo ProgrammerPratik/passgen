@@ -1,5 +1,5 @@
 # passgen
-Dimple and strong CLI based password generator made using C++
+Simple and strong CLI based password generator made using pure C++
 <br>
 Version: 1.0
 
