@@ -2,6 +2,8 @@
 
 Simple and powerful CLI-based password generator made with modern C++
 
+https://github.com/user-attachments/assets/a1ebf283-2d57-4bb9-b348-8b03e7a6ac5f
+
 ## 🚀 Features
 
 - Multiple password generation modes
