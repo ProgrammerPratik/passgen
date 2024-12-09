@@ -1,12 +1,26 @@
-#include<bits/stdc++.h> 
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<cstdlib>
+#include<ctime>
+#include<random>
 using namespace std;
+
+const string RESET = "\033[0m";
+const string GREEN = "\033[32m";
+const string BLUE = "\033[34m";
+const string RED = "\033[31m";
+const string YELLOW = "\033[33m";
+
 void help(){
-    cout<<"\nBASIC AND SIMPLE CLI BASED PASSWORD GENERATOR BY PRATIK!!!\nusage:\nbasic input: -l <length> -m\nOPTIONAL ARGUMENTS:\n-l  OR  -length   length of password\n-m  OR  -mode   mode of password (0=only letters,1=random,2=alphanumeric)\nexample input: -l 10 -m 1";
+    cout<<"\nBASIC AND SIMPLE CLI BASED PASSWORD GENERATOR BY PRATIK!!!\nusage:\nbasic input: passgen -l <length> -m <mode>\nOPTIONAL ARGUMENTS:\n-l  OR  -length   length of password\n-m  OR  -mode   mode of password (0=only letters,1=random,2=alphanumeric)\nexample input: -l 10 -m 1";
 }
 void version(){
-    cout<<"Program version:1.0\nGithub: https://github.com/ProgrammerPratik/passgen";
+    cout<<"Program version:1.1\nGithub: https://github.com/ProgrammerPratik/passgen";
 }
 string password(int len, int mode){
+    random_device rd;
+    mt19937 gen(rd());
     string alph = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     string chr = "!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~\\";
     string num = "1234567890";
@@ -14,28 +28,28 @@ string password(int len, int mode){
     while (len--) {
         switch (mode) {
             case 0: // Only letters
-                pass += alph[rand() % alph.length()];
+                pass += alph[gen() % alph.length()];
                 break;
             case 1: // Random mode
-                switch (rand() % 3) {
+                switch (gen() % 3) {
                     case 0:
-                        pass += alph[rand() % alph.length()];
+                        pass += alph[gen() % alph.length()];
                         break;
                     case 1:
-                        pass += chr[rand() % chr.length()];
+                        pass += chr[gen() % chr.length()];
                         break;
                     case 2:
-                        pass += num[rand() % num.length()];
+                        pass += num[gen() % num.length()];
                         break;
                 }
                 break;
             case 2: // Letters and numbers
-                switch (rand() % 2) {
+                switch (gen() % 2) {
                     case 0:
-                        pass += alph[rand() % alph.length()];
+                        pass += alph[gen() % alph.length()];
                         break;
                     case 1:
-                        pass += num[rand() % num.length()];
+                        pass += num[gen() % num.length()];
                         break;
                 }
                 break;
@@ -45,32 +59,53 @@ string password(int len, int mode){
 }
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    string input1,input2;
-    int l,m;
-    cin>>input1;
-    if(input1=="-h"||input1=="-help") {
+    cout<<"  _ __   __ _ ___ ___  __ _  ___ _ __  \n";
+    cout<<" | '_ \\ / _` / __/ __|/ _` |/ _ \\ '_ \\ \n";
+    cout<<" | |_) | (_| \\__ \\__ \\ (_| |  __/ | | |\n";
+    cout<<" | .__/ \\__,_|___/___/\\__, |\\___|_| |_|\n";
+    cout<<" |_|                  |___/            \n";
+    if (argc == 1) {
+        cout<<"-h for help\n";
+        return 0;
+    }
+    for (int i = 1; i < argc; i++) {
+        string arg = argv[i];
+        
+        if (arg == "-h" || arg == "-help") {
+            help();
+            return 0;
+        }
+        
+        if (arg == "-v" || arg == "-version") {
+            version();
+            return 0;
+        }
+    }
+    int length=0,mode=1;
+    for (int i = 1; i < argc; i++) {
+        string arg = argv[i];
+        
+        if ((arg == "-l" || arg == "-length") && i+1 < argc) {
+            length = stoi(argv[i+1]);
+        }
+        
+        if ((arg == "-m" || arg == "-mode") && i+1 < argc) {
+            mode = stoi(argv[i+1]);
+        }
+    };
+    if (length <= 0) {
+        cout << RED << "Error: Invalid length. Please specify a positive length.\n"<<RESET;
         help();
-        return 0;
-        }
-    if(input1=="-v"||input1=="-version"){
-        version();
-        return 0;
+        return 1;
     }
-    cin>>l;
-    cin>>input2;
-    cin>>m;
-    transform(input1.begin(), input1.end(), input1.begin(), ::tolower); 
-    transform(input2.begin(), input2.end(), input2.begin(), ::tolower); 
-    if(input1=="-l"||input1=="-length") {
-        if(input2=="-m"||input2=="-mode"){
-            cout<<password(l,m);
-        }else{
-            cout<<"Wrong Input!!\nsyntax: -l <length> -m <mode>\n or try -help for more info\n-v to check version";
-        }
-    }else{
-        cout<<"Wrong Input!!\nsyntax: -l <length> -m <mode>\n or try -help for more info\n-v to check version";
+        if (mode < 0 || mode > 2) {
+        cout << RED <<"Error: Invalid mode. Use 0, 1, or 2.\n"<<RESET;
+        help();
+        return 1;
     }
+
+    cout << GREEN <<"generated password: "<<password(length, mode) << RESET << endl;
     return 0;
 }

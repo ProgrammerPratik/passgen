@@ -1,37 +1,62 @@
 # passgen
-Simple and strong CLI based password generator made using pure C++
-<br>
-Version: 1.0
+
+Simple and powerful CLI-based password generator made with modern C++
+
+## 🚀 Features
+
+- Multiple password generation modes
+- Cryptographically secure random number generation
+- Command-line interface
+- Easy to use and customize
+
+## 🔒 Version
+Version: 1.1
+
+## 📦 Installation
 
 ```
-usage:
--l <length> -m <mode>
-there are 3 modes i.e. 0,1,2
--h    for help
+# Clone the repository
+git clone https://github.com/ProgrammerPratik/passgen.git
 
-OPTIONAL ARGUMENTS:
--l  OR  -length      length of password
--m  OR  -mode        mode of password (0=only letters,1=random,2=alphanumeric)
--h  OR  -help        for more info
--v  OR  -version     version info and stuff
+# Compile the program
+g++ -o passgen passgen.cpp
 ```
 
-examples:
-
-Password generation with mode 0 (only letters)
+## 🔐 Usage
+Basic Syntax
 ```
--l 10 -m 0 
-PhQGHuMEAy
+passgen -l <length> -m <mode>
 ```
 
-Password generation with mode 1 (random)
+Modes
+
+`0`: Only letters<br>
+`1`: Random mix (letters, special characters, numbers)<br>
+`2`: Letters and numbers<br>
+
+Command-line Options
+
+`-l` or `-length`: Specify password length<br>
+`-m` or `-mode`: Choose password generation mode<br>
+`-h` or `-help`: Display help information<br>
+`-v` or `-version`: Show version details<br>
+
+## 🎲 Examples
+Mode 0 (Only Letters)
 ```
--l 8 -m 1
-8%5E{6?_
+passgen -l 10 -m 0
+# Example output: PhQGHuMEAy
+```
+Mode 1 (Random Mix)
+```
+passgen -l 8 -m 1
+# Example output: 8%5E{6?_
+```
+Mode 2 (Alphanumeric)
+```
+passgen -l 10 -m 2
+# Example output: 8G5Ey68237
 ```
 
-Password generation with mode 2 (alphanumeric)
-```
--l 10 -m 2 
-8G5Ey68237
-```
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
