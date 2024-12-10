@@ -2,7 +2,7 @@
 
 Simple and powerful CLI-based password generator made with modern C++
 
-https://github.com/user-attachments/assets/a1ebf283-2d57-4bb9-b348-8b03e7a6ac5f
+https://github.com/user-attachments/assets/742fbaac-0800-4db9-b7d2-fa0ef66cd8df
 
 ## 🚀 Features
 
@@ -23,6 +23,24 @@ git clone https://github.com/ProgrammerPratik/passgen.git
 # Compile the program
 g++ -o passgen passgen.cpp
 ```
+Adding to PATH Environment Variable (if you want instant access anywhere)
+windows:
+1. Compile and copy path to the file.
+2. Search 'Environment Variables' and open it.
+3. Under 'System variables', find and select 'Path', then click 'Edit'.
+4. Click 'New' and add the full path to the directory containing passgen.exe (that you copied before), and save.
+
+Linux:
+1. Compile and copy path to the file.
+2. Open terminal and paste the following (replace the path with actual path):
+```
+export PATH=$PATH:/[path]
+```
+3. Save the file and reload the configuration:
+```
+source ~/.bashrc    # or source ~/.zshrc
+```
+
 
 ## 🔐 Usage
 Basic Syntax
